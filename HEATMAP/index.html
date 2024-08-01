@@ -1,1 +1,131 @@
 
+<!DOCTYPE html>
+</html>
+  <head>
+    <title>Zambia's Food System Status in 2050</title>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-heatmap.min.js"></script>
+    <script src="JS/chart.js" ></script>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style type="text/css">      
+      html, body, #container { 
+        width: 100%; margin: 0; padding: 0; 
+        height:100%;
+      } 
+    </style>
+
+
+  </head>
+  <body>
+
+<header>
+  <img src="IMAGES/Fosta_Icon_Rev.png"  alt="fosta logo" />
+  <h1>Zambia's Food System Status in 2050</h1>
+
+  <div class="clearAll"></div>
+</header>
+
+
+    <div id="container">
+
+
+     
+
+
+      <script>
+              anychart.onDocumentReady(function () {
+
+        // create a heatmap
+        let chart = anychart.heatMap(getData());
+        // name the heatmap
+        //chart.title("Zambia's Food System Status in 2050");
+
+        //var title = chart.title().rotation(90);
+        //chart.title().align("left");
+     
+
+        //adding an event listener for a pop up window
+        chart.listen('pointClick', function (e) {
+     
+        
+        });
+
+        // set the container for the heatmap
+        chart.container("container");
+
+        // draw the heatmap
+        chart.draw();
+
+        // enable legend
+        chart.legend(true);
+        chart.legend().useHtml(true);
+        chart.legend().align("right");
+        chart.legend().fontWeight(300);
+      
+        //changes color scale
+        chart.colorScale(colorScale);
+
+        // enable html for the labels 
+        chart.labels(false);
+
+        // configure the labels
+          chart.labels().format(function () {
+            var heat = (this.heat);
+            if (heat < 10) return "Improvement high confidence";
+            if (heat < 20) return "Improvement low confidence";
+            if (heat < 30) return "Unknown";
+            if (heat < 40) return "Deterioration low confidence";
+            if (heat > 40) return "Deterioration high confidence";
+          });
+
+        //styling the chart
+        chart.xAxis().stroke(null);
+        chart.yAxis().stroke(null);
+        chart.yAxis().labels().padding([3, 10, 3, 0]);
+        chart.xAxis().labels().padding([0, 0, 0, 10]);
+        chart.xAxis().labels().rotation(-90);
+
+       
+        // set the tooltip - changes label from numeric value to string
+         chart.tooltip().title().useHtml(true);
+         var title = chart.tooltip().title();
+        
+
+         var categoryNames = ["Unkown", "Improvement low confidence", "Improvement high confidence", "Deterioration low confidence", "Deterioration high confidence"]
+         var additionalInfo = "here is some more information"
+
+          var tooltip = chart.tooltip();
+          tooltip.fontWeight(400);
+          tooltip.useHtml(true);
+          tooltip.padding([10, 10, 10, 10]);
+          tooltip.positionMode("point");        
+          tooltip.format(function () {
+            if (this.heat <= 10) {
+              return (
+                '<span class="tooltipText">RTP: </span>' + this.y + "<br/>" + '<span class="tooltipText"> Category: </span>' + categoryNames[0] + "<br/>" + '<span class="tooltipText">Implication Statement: </span>' + this.getData("custom_field"));
+            }
+            if (this.heat >= 11 && this.heat <= 20) {
+              return ('<span class="tooltipText">RTP: </span>' + this.y + "<br/>" + '<span class="tooltipText"> Category: </span>' + categoryNames[1]);
+            }
+            if (this.heat >= 21 && this.heat <= 30) {
+              return ('<span class="tooltipText">RTP: </span>' + this.y + "<br/>" + '<span class="tooltipText"> Category: </span>' + categoryNames[2]);
+            }
+            if (this.heat >= 31 && this.heat <= 40) {
+              return ('<span class="tooltipText">RTP: </span>' + this.y + "<br/>" + '<span class="tooltipText"> Category: </span>' + categoryNames[2]);
+            }
+            if (this.heat >= 41) {
+              return ('<span class="tooltipText">RTP: </span>' + this.y + "<br/>" + '<span class="tooltipText"> Category: </span>' + categoryNames[2]);
+            }
+          });
+          
+
+      });
+      // add the data
+      </script>
+
+
+    </div>
+  </body>
+</html>
+
