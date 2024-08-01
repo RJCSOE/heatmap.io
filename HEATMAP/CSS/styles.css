@@ -1,0 +1,84 @@
+.legend{
+
+
+    display: grid;
+    
+    grid-template-columns: 10fr 1fr 10fr 1fr 5fr 1fr 10fr 1fr 10fr 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap:10px;
+    text-align: right;
+}
+
+.legendContainer{
+    margin:10px 20px 0px 10px;
+    font-style: normal;
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    letter-spacing: normal;
+    fill: rgb(124, 134, 142);
+    opacity: 1;
+    font-variant: normal;
+    text-decoration: none;
+    float:right;
+    width:auto;
+  
+
+}
+
+
+
+.legendTitle{
+padding: 0 0 20px 0;
+font-weight: bold;
+}
+
+.one{
+    background-color:#00A7E1;
+}
+
+.two{
+    background-color:#0474BA;
+}
+.three{
+    background-color:#EBEBEB;
+}
+.four{
+    background-color:#FFA630;
+}
+.five{
+    background-color:#F17730;
+}
+
+header{
+    background-color:#231F20;
+    padding:10px;
+    position:sticky;
+    z-index:400;
+}
+ header img{float:left;
+height:50px;}
+
+
+H1{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+ float:left;
+    color:#ffffff;
+    font-weight:normal;
+    text-align:center;
+    font-size: 16px;
+    display: block;
+    margin:15px 0px 0px 15px;
+
+
+}
+
+.tooltipText{display:inline-block;
+padding: 5px 03px 5px 0px;}
+
+
+.clearAll{Clear:both;}
+
+
+#container{height:100%;}
+.anychart-credits-text, .anychart-credits-logo{display:none;}
