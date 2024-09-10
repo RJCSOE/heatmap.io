@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scroll Transition</title>
+    <title>Hairdresser & Dog Groomer</title>
     <style>
         body {
             margin: 0;
@@ -19,8 +19,8 @@
             height: 100vh;
             overflow-y: auto;
             overflow-x: hidden;
-            position: relative;
-            background: lightcoral; /* Example background color */
+            background: #f7f7f7; /* Light background color for the vertical section */
+            padding: 20px;
         }
         .scroll-horizontal {
             display: flex;
@@ -31,13 +31,49 @@
             overflow-y: hidden;
             position: absolute;
             top: 100vh; /* Position it just below the vertical scroll area */
-            background: lightblue; /* Example background color */
+            background: #f0f0f0; /* Light background color for the horizontal section */
+            padding: 20px;
+        }
+        .vertical-content, .horizontal-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        .horizontal-content {
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
         }
         .section {
             height: 100vh;
             width: 100vw;
-            display: inline-block;
-            vertical-align: top;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: lightcoral;
+            color: white;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .dog-groomer {
+            width: 300px;
+            height: 300px;
+            background: #d3d3d3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .dog-groomer h2 {
+            margin: 0;
+            color: #333;
         }
         /* Hide scrollbar for webkit browsers */
         .scroll-vertical::-webkit-scrollbar,
@@ -56,17 +92,41 @@
 <body>
     <div class="container">
         <div class="scroll-vertical">
-            <div style="height: 100%; background: lightcoral;">Vertical Scrolling Content</div>
+            <div class="vertical-content">
+                <div class="section">
+                    Welcome to Our Hair Salon!
+                </div>
+                <div class="section">
+                    We offer a range of haircuts and styling services.
+                </div>
+                <div class="section">
+                    Book your appointment today!
+                </div>
+            </div>
         </div>
         <div class="scroll-horizontal">
-            <div class="section" style="background: lightgreen;">Horizontal Section 1</div>
-            <div class="section" style="background: lightyellow;">Horizontal Section 2</div>
-            <div class="section" style="background: lightpink;">Horizontal Section 3</div>
+            <div class="horizontal-content">
+                <div class="dog-groomer">
+                    <h2>Dog Grooming Services</h2>
+                    <p>Specializing in all breeds</p>
+                    <p>Contact us for an appointment!</p>
+                </div>
+                <div class="dog-groomer">
+                    <h2>Dog Grooming Services</h2>
+                    <p>Specializing in all breeds</p>
+                    <p>Contact us for an appointment!</p>
+                </div>
+                <div class="dog-groomer">
+                    <h2>Dog Grooming Services</h2>
+                    <p>Specializing in all breeds</p>
+                    <p>Contact us for an appointment!</p>
+                </div>
+            </div>
         </div>
     </div>
     <script>
         // Time in milliseconds before transitioning to horizontal scroll
-        const transitionTime = 5000;
+        const transitionTime = 10000; // 10 seconds
 
         setTimeout(() => {
             document.querySelector('.scroll-vertical').style.display = 'none';
