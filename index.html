@@ -68,4 +68,17 @@
     </div>
     <script>
         document.getElementById('horizontal-scroll').addEventListener('scroll', function() {
-            var scrollHorizontal = document.getElementById('horizontal
+            var scrollHorizontal = document.getElementById('horizontal-scroll');
+            var verticalScroll = document.getElementById('vertical-scroll');
+            
+            // Check if horizontal scroll has reached its end
+            if (scrollHorizontal.scrollLeft >= scrollHorizontal.scrollWidth - scrollHorizontal.clientWidth) {
+                verticalScroll.style.top = '0'; // Move vertical scroll into view
+                scrollHorizontal.style.overflowX = 'hidden'; // Hide horizontal scrollbar
+                scrollHorizontal.style.overflowY = 'auto'; // Allow vertical scrolling in horizontal container
+                verticalScroll.style.position = 'relative'; // Position vertically relative to parent
+            }
+        });
+    </script>
+</body>
+</html>
