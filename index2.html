@@ -1,77 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="https://d3js.org/d3.v7.min.js"></script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heatmap Example</title>
+    <title>Scroll Transition</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            overflow: hidden; /* Hide default scrollbars */
         }
         .container {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             height: 100vh;
+            overflow: hidden; /* Hide scrollbars for container */
+        }
+        .scroll-horizontal {
             width: 100vw;
-            padding: 20px;
+            height: 100vh;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            position: relative;
         }
-        .header {
-            background: #f0f0f0;
-            padding: 10px;
-            text-align: center;
-            border-bottom: 2px solid #ddd;
+        .scroll-vertical {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: absolute;
+            top: 100vh; /* Initially positioned just below the horizontal section */
         }
-        .heatmap {
-            flex: 1;
-            display: flex;
-            flex-wrap: wrap;
-            border: 2px solid #ddd;
-            box-sizing: border-box;
-            padding: 10px;
-            gap: 2px;
+        .section {
+            height: 100vh;
+            display: inline-block;
+            vertical-align: top;
         }
-        .tile {
-            width: calc(100% / 50 - 2px);
-            height: calc((100vh - 60px) / 4 - 2px);
-            box-sizing: border-box;
-            border: 1px solid #ddd;
+        .vertical-content {
+            height: 200vh; /* Example height to show vertical scrolling */
+        }
+        /* Hide the scrollbar for webkit browsers */
+        .scroll-horizontal::-webkit-scrollbar,
+        .scroll-vertical::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide the scrollbar for Firefox */
+        .scroll-horizontal {
+            scrollbar-width: none;
+        }
+        .scroll-vertical {
+            scrollbar-width: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Heatmap</h1>
-            <div>Legend: Blue (High Confidence), Orange (Low Confidence), Grey (Unknown), Light Blue (Increase), Light Orange (Decrease)</div>
+        <div class="scroll-horizontal" id="horizontal-scroll">
+            <div class="section" style="background: lightcoral;">Horizontal Section</div>
+            <div class="section" style="background: lightblue;">More Horizontal</div>
+            <!-- The vertical scroll section will be positioned here -->
+            <div class="scroll-vertical" id="vertical-scroll">
+                <div class="vertical-content" style="background: lightgreen;">
+                    Vertical Scrolling Content
+                </div>
+            </div>
         </div>
-        <div class="heatmap" id="heatmap"></div>
     </div>
     <script>
-        // Set up dimensions and data
-        const rows = 4;
-        const cols = 50;
-        const container = d3.select("#heatmap");
-        
-        // Generate random data for heatmap
-        const data = Array.from({ length: rows }, () => Array.from({ length: cols }, () => Math.random()));
-        
-        // Define color scale
-        const colorScale = d3.scaleLinear()
-            .domain([0, 0.25, 0.5, 0.75, 1])
-            .range(['grey', 'blue', 'orange', 'lightblue', 'lightorange']);
-        
-        // Create heatmap tiles
-        data.forEach((row, rowIndex) => {
-            row.forEach((value, colIndex) => {
-                container.append('div')
-                    .attr('class', 'tile')
-                    .style('background-color', colorScale(value));
-            });
-        });
-    </script>
-</body>
-</html>
+        document.getElementById('horizontal-scroll').addEventListener('scroll', function() {
+            var scrollHorizontal = document.getElementById('horizontal
