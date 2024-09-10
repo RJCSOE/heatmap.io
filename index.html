@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hairdresser & Dog Groomer</title>
+    <title>Vertical and Horizontal Scrolling</title>
     <style>
         body {
             margin: 0;
+            font-family: Arial, sans-serif;
             overflow: hidden; /* Hide default scrollbars */
         }
         .container {
@@ -19,8 +20,9 @@
             height: 100vh;
             overflow-y: auto;
             overflow-x: hidden;
-            background: #f7f7f7; /* Light background color for the vertical section */
+            background: #f0f0f0; /* Light background color */
             padding: 20px;
+            box-sizing: border-box;
         }
         .scroll-horizontal {
             display: flex;
@@ -29,51 +31,35 @@
             width: 100vw;
             overflow-x: auto;
             overflow-y: hidden;
-            position: absolute;
-            top: 100vh; /* Position it just below the vertical scroll area */
-            background: #f0f0f0; /* Light background color for the horizontal section */
+            background: #e0e0e0; /* Light background color */
             padding: 20px;
-        }
-        .vertical-content, .horizontal-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-        }
-        .horizontal-content {
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            background-color: #fff;
-            padding: 20px;
+            box-sizing: border-box;
         }
         .section {
-            height: 100vh;
-            width: 100vw;
+            height: 100%;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: lightcoral;
-            color: white;
-            font-size: 24px;
-            font-family: Arial, sans-serif;
-            text-align: center;
+            margin-bottom: 20px;
         }
-        .dog-groomer {
-            width: 300px;
-            height: 300px;
-            background: #d3d3d3;
+        .scroll-horizontal .section {
+            width: 300px; /* Fixed width for horizontal sections */
+            margin-right: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .horizontal-content {
+            display: flex;
+            flex-direction: row;
+        }
+        .vertical-content {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            text-align: center;
-        }
-        .dog-groomer h2 {
-            margin: 0;
-            color: #333;
         }
         /* Hide scrollbar for webkit browsers */
         .scroll-vertical::-webkit-scrollbar,
@@ -94,44 +80,32 @@
         <div class="scroll-vertical">
             <div class="vertical-content">
                 <div class="section">
-                    Welcome to Our Hair Salon!
+                    <img src="https://via.placeholder.com/800x600?text=Vertical+Image+1" alt="Vertical Image 1">
                 </div>
                 <div class="section">
-                    We offer a range of haircuts and styling services.
+                    <img src="https://via.placeholder.com/800x600?text=Vertical+Image+2" alt="Vertical Image 2">
                 </div>
                 <div class="section">
-                    Book your appointment today!
+                    <img src="https://via.placeholder.com/800x600?text=Vertical+Image+3" alt="Vertical Image 3">
                 </div>
             </div>
         </div>
         <div class="scroll-horizontal">
             <div class="horizontal-content">
-                <div class="dog-groomer">
-                    <h2>Dog Grooming Services</h2>
-                    <p>Specializing in all breeds</p>
-                    <p>Contact us for an appointment!</p>
+                <div class="section">
+                    <img src="https://via.placeholder.com/300x200?text=Horizontal+Image+1" alt="Horizontal Image 1">
                 </div>
-                <div class="dog-groomer">
-                    <h2>Dog Grooming Services</h2>
-                    <p>Specializing in all breeds</p>
-                    <p>Contact us for an appointment!</p>
+                <div class="section">
+                    <img src="https://via.placeholder.com/300x200?text=Horizontal+Image+2" alt="Horizontal Image 2">
                 </div>
-                <div class="dog-groomer">
-                    <h2>Dog Grooming Services</h2>
-                    <p>Specializing in all breeds</p>
-                    <p>Contact us for an appointment!</p>
+                <div class="section">
+                    <img src="https://via.placeholder.com/300x200?text=Horizontal+Image+3" alt="Horizontal Image 3">
+                </div>
+                <div class="section">
+                    <img src="https://via.placeholder.com/300x200?text=Horizontal+Image+4" alt="Horizontal Image 4">
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        // Time in milliseconds before transitioning to horizontal scroll
-        const transitionTime = 10000; // 10 seconds
-
-        setTimeout(() => {
-            document.querySelector('.scroll-vertical').style.display = 'none';
-            document.querySelector('.scroll-horizontal').style.position = 'relative'; // Move it into view
-        }, transitionTime);
-    </script>
 </body>
 </html>
