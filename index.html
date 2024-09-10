@@ -11,74 +11,67 @@
         }
         .container {
             display: flex;
-            flex-direction: row;
-            height: 100vh;
+            flex-direction: column;
+            height: 200vh; /* Height to allow vertical scrolling */
             overflow: hidden; /* Hide scrollbars for container */
         }
-        .scroll-horizontal {
-            width: 100vw;
-            height: 100vh;
-            overflow-x: auto;
-            overflow-y: hidden;
-            white-space: nowrap;
-            position: relative;
-        }
         .scroll-vertical {
-            width: 100%;
-            height: 100%;
+            height: 100vh;
             overflow-y: auto;
             overflow-x: hidden;
+            position: relative;
+            background: lightcoral; /* Example background color */
+        }
+        .scroll-horizontal {
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+            width: 100vw;
+            overflow-x: auto;
+            overflow-y: hidden;
             position: absolute;
-            top: 100vh; /* Initially positioned just below the horizontal section */
+            top: 100vh; /* Position it just below the vertical scroll area */
+            background: lightblue; /* Example background color */
         }
         .section {
             height: 100vh;
+            width: 100vw;
             display: inline-block;
             vertical-align: top;
         }
-        .vertical-content {
-            height: 200vh; /* Example height to show vertical scrolling */
-        }
-        /* Hide the scrollbar for webkit browsers */
-        .scroll-horizontal::-webkit-scrollbar,
-        .scroll-vertical::-webkit-scrollbar {
+        /* Hide scrollbar for webkit browsers */
+        .scroll-vertical::-webkit-scrollbar,
+        .scroll-horizontal::-webkit-scrollbar {
             display: none;
         }
-        /* Hide the scrollbar for Firefox */
-        .scroll-horizontal {
+        /* Hide scrollbar for Firefox */
+        .scroll-vertical {
             scrollbar-width: none;
         }
-        .scroll-vertical {
+        .scroll-horizontal {
             scrollbar-width: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="scroll-horizontal" id="horizontal-scroll">
-            <div class="section" style="background: lightcoral;">Horizontal Section</div>
-            <div class="section" style="background: lightblue;">More Horizontal</div>
-            <!-- The vertical scroll section will be positioned here -->
-            <div class="scroll-vertical" id="vertical-scroll">
-                <div class="vertical-content" style="background: lightgreen;">
-                    Vertical Scrolling Content
-                </div>
-            </div>
+        <div class="scroll-vertical">
+            <div style="height: 100%; background: lightcoral;">Vertical Scrolling Content</div>
+        </div>
+        <div class="scroll-horizontal">
+            <div class="section" style="background: lightgreen;">Horizontal Section 1</div>
+            <div class="section" style="background: lightyellow;">Horizontal Section 2</div>
+            <div class="section" style="background: lightpink;">Horizontal Section 3</div>
         </div>
     </div>
     <script>
-        document.getElementById('horizontal-scroll').addEventListener('scroll', function() {
-            var scrollHorizontal = document.getElementById('horizontal-scroll');
-            var verticalScroll = document.getElementById('vertical-scroll');
-            
-            // Check if horizontal scroll has reached its end
-            if (scrollHorizontal.scrollLeft >= scrollHorizontal.scrollWidth - scrollHorizontal.clientWidth) {
-                verticalScroll.style.top = '0'; // Move vertical scroll into view
-                scrollHorizontal.style.overflowX = 'hidden'; // Hide horizontal scrollbar
-                scrollHorizontal.style.overflowY = 'auto'; // Allow vertical scrolling in horizontal container
-                verticalScroll.style.position = 'relative'; // Position vertically relative to parent
-            }
-        });
+        // Time in milliseconds before transitioning to horizontal scroll
+        const transitionTime = 5000;
+
+        setTimeout(() => {
+            document.querySelector('.scroll-vertical').style.display = 'none';
+            document.querySelector('.scroll-horizontal').style.position = 'relative'; // Move it into view
+        }, transitionTime);
     </script>
 </body>
 </html>
