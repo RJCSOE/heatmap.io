@@ -20,7 +20,7 @@
             height: 100vh;
             overflow-y: auto;
             overflow-x: hidden;
-            background: #f0f0f0; /* Light background color */
+            background: linear-gradient(to bottom, #ff66b2, #66b3ff); /* Pink-blue gradient background */
             padding: 20px;
             box-sizing: border-box;
         }
@@ -31,9 +31,11 @@
             width: 100vw;
             overflow-x: auto;
             overflow-y: hidden;
-            background: #e0e0e0; /* Light background color */
+            background: linear-gradient(to bottom, #66ff66, #ff6666); /* Green-red gradient background */
             padding: 20px;
             box-sizing: border-box;
+            position: absolute;
+            top: 100vh; /* Position it just below the vertical scroll area */
         }
         .section {
             height: 100%;
@@ -51,61 +53,6 @@
             max-width: 100%;
             height: auto;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        .horizontal-content {
-            display: flex;
-            flex-direction: row;
-        }
-        .vertical-content {
-            display: flex;
-            flex-direction: column;
-        }
-        /* Hide scrollbar for webkit browsers */
-        .scroll-vertical::-webkit-scrollbar,
-        .scroll-horizontal::-webkit-scrollbar {
-            display: none;
-        }
-        /* Hide scrollbar for Firefox */
-        .scroll-vertical {
-            scrollbar-width: none;
-        }
-        .scroll-horizontal {
-            scrollbar-width: none;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="scroll-vertical">
-            <div class="vertical-content">
-                <div class="section">
-                    <img src="https://via.placeholder.com/800x600?text=Vertical+Image+1" alt="Vertical Image 1">
-                </div>
-                <div class="section">
-                    <img src="https://via.placeholder.com/800x600?text=Vertical+Image+2" alt="Vertical Image 2">
-                </div>
-                <div class="section">
-                    <img src="https://via.placeholder.com/800x600?text=Vertical+Image+3" alt="Vertical Image 3">
-                </div>
-            </div>
-        </div>
-        <div class="scroll-horizontal">
-            <div class="horizontal-content">
-                <div class="section">
-                    <img src="https://via.placeholder.com/300x200?text=Horizontal+Image+1" alt="Horizontal Image 1">
-                </div>
-                <div class="section">
-                    <img src="https://via.placeholder.com/300x200?text=Horizontal+Image+2" alt="Horizontal Image 2">
-                </div>
-                <div class="section">
-                    <img src="https://via.placeholder.com/300x200?text=Horizontal+Image+3" alt="Horizontal Image 3">
-                </div>
-                <div class="section">
-                    <img src="https://via.placeholder.com/300x200?text=Horizontal+Image+4" alt="Horizontal Image 4">
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+        .horizont
