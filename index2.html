@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heatmap Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+            padding: 20px;
+        }
+        .header {
+            background: #f0f0f0;
+            padding: 10px;
+            text-align: center;
+            border-bottom: 2px solid #ddd;
+        }
+        .heatmap {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            border: 2px solid #ddd;
+            box-sizing: border-box;
+            padding: 10px;
+            gap: 2px;
+        }
+        .tile {
+            width: calc(100% / 50 - 2px);
+            height: calc((100vh - 60px) / 4 - 2px);
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Heatmap</h1>
+            <div>Legend: Blue (High Confidence), Orange (Low Confidence), Grey (Unknown), Light Blue (Increase), Light Orange (Decrease)</div>
+        </div>
+        <div class="heatmap" id="heatmap"></div>
+    </div>
+    <script>
+        // Set up dimensions and data
+        const rows = 4;
+        const cols = 50;
+        const container = d3.select("#heatmap");
+        
+        // Generate random data for heatmap
+        const data = Array.from({ length: rows }, () => Array.from({ length: cols }, () => Math.random()));
+        
+        // Define color scale
+        const colorScale = d3.scaleLinear()
+            .domain([0, 0.25, 0.5, 0.75, 1])
+            .range(['grey', 'blue', 'orange', 'lightblue', 'lightorange']);
+        
+        // Create heatmap tiles
+        data.forEach((row, rowIndex) => {
+            row.forEach((value, colIndex) => {
+                container.append('div')
+                    .attr('class', 'tile')
+                    .style('background-color', colorScale(value));
+            });
+        });
+    </script>
+</body>
+</html>
