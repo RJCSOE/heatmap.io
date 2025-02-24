@@ -70,6 +70,14 @@
         // set the container for the heatmap
         chart.container("container");
 
+        // Disable auto-scaling on the x-axis (columns)
+        chart.xScale().mode('continuous');  // Ensures the scale is continuous but no auto-resizing
+        chart.xScale().ticks(true);
+        
+        // set fixed width for columns
+        const columnWidth = 20;  // Adjust this for the fixed width
+        chart.xAxis().labels().fontSize(12); // Adjust font size for the x-axis labels
+
         // draw the heatmap
         chart.draw();
 
@@ -102,8 +110,8 @@
         chart.xAxis().labels().padding([0, 0, 0, 10]);
         chart.xAxis().labels().rotation(-90);
 
-        // Adjust column width (half the size)
-        chart.xScale().range([0, 0.5]);  // Reduce the width by half
+        // Adjust the size of the columns (set the width directly)
+        chart.xAxis().ticks().interval(columnWidth); // Control column width
 
         // set the tooltip
         chart.tooltip().title().useHtml(true);
