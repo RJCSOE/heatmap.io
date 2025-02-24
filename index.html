@@ -41,6 +41,14 @@
     header h1 {
       font-size: 24px;
     }
+
+    /* Tooltip Styling: Double the size */
+    .anychart-tooltip {
+      font-size: 18px; /* Increase font size */
+      width: 300px; /* Make the tooltip wider */
+      height: 200px; /* Increase height */
+      padding: 15px; /* More padding for better visibility */
+    }
   </style>
 </head>
 
@@ -93,6 +101,9 @@
         chart.yAxis().labels().padding([3, 10, 3, 0]);
         chart.xAxis().labels().padding([0, 0, 0, 10]);
         chart.xAxis().labels().rotation(-90);
+
+        // Adjust column width (half the size)
+        chart.xScale().range([0, 0.5]);  // Reduce the width by half
 
         // set the tooltip
         chart.tooltip().title().useHtml(true);
