@@ -25,8 +25,13 @@
 
     <script>
       anychart.onDocumentReady(function () {
-        // Create a heatmap
-        let chart = anychart.heatMap(getData());
+        // Create a heatmap with transposed data
+        let chart = anychart.heatMap(getData().map(point => ({
+          x: point.y,
+          y: point.x,
+          heat: point.heat,
+          custom_field: point.custom_field
+        })));
 
         // Event listener for point clicks
         chart.listen('pointClick', function (e) {});
@@ -55,12 +60,12 @@
           if (heat > 40) return "Deterioration high confidence";
         });
 
-        // Swap the axes
-        chart.yAxis().stroke(null);
+        // Swap the axes visually
         chart.xAxis().stroke(null);
-        chart.xAxis().labels().padding([3, 10, 3, 0]);
-        chart.yAxis().labels().padding([0, 0, 0, 10]);
-        chart.yAxis().labels().rotation(-90);
+        chart.yAxis().stroke(null);
+        chart.yAxis().labels().padding([3, 10, 3, 0]);
+        chart.xAxis().labels().padding([0, 0, 0, 10]);
+        chart.xAxis().labels().rotation(-90);
 
         // Tooltip configuration
         chart.tooltip().title().useHtml(true);
@@ -84,7 +89,7 @@
           else category = categoryNames[4];
 
           return (
-            '<span class="tooltipText">RTP: </span>' + this.x + "<br/>" +
+            '<span class="tooltipText">RTP: </span>' + this.y + "<br/>" +
             '<span class="tooltipText">Category: </span>' + category + "<br/>" +
             '<span class="tooltipText">Implication Statement: </span>' + this.getData("custom_field")
           );
