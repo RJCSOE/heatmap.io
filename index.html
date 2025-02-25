@@ -71,6 +71,16 @@
   <div id="container">
 
     <script>
+
+
+      document.addEventListener("DOMContentLoaded", function () {
+    const selector = document.getElementById("country-selector");
+
+    selector.addEventListener("change", function () {
+      document.title = selector.value + " Food System Status in 2050"; // Updates browser tab title
+    });
+  });
+      
       anychart.onDocumentReady(function () {
 
 
