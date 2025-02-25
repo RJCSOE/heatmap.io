@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Food System Status in 2050</title>
+  <title>
+     <select id="country-selector">
+    <option value="South Africa">South Africa</option>
+    <option value="Malawi">Malawi</option>
+    <option value="Tanzania">Tanzania</option>
+    <option value="Zambia">Zambia</option>
+  </select>
+    
+    Food System Status in 2050</title>
   <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
   <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-heatmap.min.js"></script>
   <script src="JS/chart.js"></script>
@@ -64,6 +72,21 @@
 
     <script>
       anychart.onDocumentReady(function () {
+
+
+// Disable auto-scaling on the x-axis
+chart.xScale().mode('continuous');
+chart.xScale().ticks().interval(1); // Ensure equal spacing
+
+// Adjust column width
+const columnWidth = 20; // Set this based on the smallest column
+chart.xAxis().labels().fontSize(30);
+chart.yAxis().labels().padding([3, 10, 3, 0]);
+chart.xAxis().labels().padding([0, 0, 0, 10]);
+
+// Set fixed width for the heatmap itself to prevent stretching
+chart.bounds(0, 0, columnWidth * 4, 1500);
+        
         // create a heatmap
         let chart = anychart.heatMap(getData());
         
