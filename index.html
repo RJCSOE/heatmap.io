@@ -3,15 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>
-     <select id="country-selector">
-    <option value="South Africa">South Africa</option>
-    <option value="Malawi">Malawi</option>
-    <option value="Tanzania">Tanzania</option>
-    <option value="Zambia">Zambia</option>
-  </select>
-    
-    Food System Status in 2050</title>
+  <title>  Food System Status in 2050</title>
   <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
   <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-heatmap.min.js"></script>
   <script src="JS/chart.js"></script>
@@ -73,13 +65,6 @@
     <script>
 
 
-      document.addEventListener("DOMContentLoaded", function () {
-    const selector = document.getElementById("country-selector");
-
-    selector.addEventListener("change", function () {
-      document.title = selector.value + " Food System Status in 2050"; // Updates browser tab title
-    });
-  });
       
       anychart.onDocumentReady(function () {
 
