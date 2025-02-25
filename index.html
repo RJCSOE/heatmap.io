@@ -4,12 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> 
-    <select id="titleDropdown" onchange="updateTitle()">
-        <option>South Africa</option>
-        <option>Tanzania</option>
-        <option>Malawi</option>
-        <option>Zambia</option>
-      </select>
+
       Food System Status in 2050</title>
   <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
   <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-heatmap.min.js"></script>
@@ -65,7 +60,14 @@
 
   <header>
     <img src="IMAGES/Fosta_Icon_Rev.png" alt="fosta logo" />
-    <h1>Food System Status in 2050</h1>
+    <h1>
+          <select id="titleDropdown" onchange="updateTitle()">
+        <option>South Africa</option>
+        <option>Tanzania</option>
+        <option>Malawi</option>
+        <option>Zambia</option>
+      </select>
+      Food System Status in 2050</h1>
     <div class="clearAll"></div>
   </header>
 
