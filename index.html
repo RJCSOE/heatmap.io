@@ -24,7 +24,7 @@
     }
 
     .anychart-heatmap {
-      width: 100%; /* Ensure the chart expands to fill container */
+      width: 800%; /* Ensure the chart expands to fill container */
     }
 
     /* Additional styling for the header */
@@ -76,7 +76,7 @@
         
         // set fixed width for columns
         const columnWidth = 20;  // Adjust this for the fixed width
-        chart.xAxis().labels().fontSize(12); // Adjust font size for the x-axis labels
+        chart.xAxis().labels().fontSize(30); // Adjust font size for the x-axis labels
 
         // draw the heatmap
         chart.draw();
@@ -108,7 +108,7 @@
         chart.yAxis().stroke(null);
         chart.yAxis().labels().padding([3, 10, 3, 0]);
         chart.xAxis().labels().padding([0, 0, 0, 10]);
-        chart.xAxis().labels().rotation(-90);
+        //chart.xAxis().labels().rotation(-90);
 
         // Adjust the size of the columns (set the width directly)
         chart.xAxis().ticks().interval(columnWidth); // Control column width
