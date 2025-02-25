@@ -54,6 +54,13 @@
 
 <body>
 
+  <label for="titleDropdown">Choose a title:</label>
+    <select id="titleDropdown" onchange="updateTitle()">
+        <option value="Option1">Awesome</option>
+        <option value="Option2">Fantastic</option>
+        <option value="Option3">Legendary</option>
+    </select>
+
   <header>
     <img src="IMAGES/Fosta_Icon_Rev.png" alt="fosta logo" />
     <h1>Food System Status in 2050</h1>
@@ -63,6 +70,12 @@
   <div id="container">
 
     <script>
+      function updateTitle() {
+            let dropdown = document.getElementById("titleDropdown");
+            let selectedText = dropdown.options[dropdown.selectedIndex].text;
+            document.title = selectedText + " - My Website";
+            document.getElementById("titleHeading").innerText = selectedText + " Title";
+        }
       anychart.onDocumentReady(function () {
 
 
