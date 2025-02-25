@@ -66,18 +66,7 @@
       anychart.onDocumentReady(function () {
 
 
-// Disable auto-scaling on the x-axis
-chart.xScale().mode('continuous');
-chart.xScale().ticks().interval(1); // Ensure equal spacing
 
-// Adjust column width
-const columnWidth = 20; // Set this based on the smallest column
-chart.xAxis().labels().fontSize(30);
-chart.yAxis().labels().padding([3, 10, 3, 0]);
-chart.xAxis().labels().padding([0, 0, 0, 10]);
-
-// Set fixed width for the heatmap itself to prevent stretching
-chart.bounds(0, 0, columnWidth * 4, 1500);
         
         // create a heatmap
         let chart = anychart.heatMap(getData());
