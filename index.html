@@ -3,7 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>  Food System Status in 2050</title>
+  <title> 
+    <select id="titleDropdown" onchange="updateTitle()">
+        <option>South Africa</option>
+        <option>Tanzania</option>
+        <option>Malawi</option>
+        <option>Zambia</option>
+      </select>
+      Food System Status in 2050</title>
   <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
   <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-heatmap.min.js"></script>
   <script src="JS/chart.js"></script>
@@ -54,12 +61,7 @@
 
 <body>
 
-  <label for="titleDropdown">Choose a title:</label>
-    <select id="titleDropdown" onchange="updateTitle()">
-        <option value="Option1">Awesome</option>
-        <option value="Option2">Fantastic</option>
-        <option value="Option3">Legendary</option>
-    </select>
+ 
 
   <header>
     <img src="IMAGES/Fosta_Icon_Rev.png" alt="fosta logo" />
@@ -70,12 +72,12 @@
   <div id="container">
 
     <script>
-      function updateTitle() {
-            let dropdown = document.getElementById("titleDropdown");
-            let selectedText = dropdown.options[dropdown.selectedIndex].text;
-            document.title = selectedText + " - My Website";
-            document.getElementById("titleHeading").innerText = selectedText + " Title";
-        }
+    function updateTitle() {
+      let dropdown = document.getElementById("titleDropdown");
+      let selectedCountry = dropdown.options[dropdown.selectedIndex].text;
+      document.title = selectedCountry + " Food System Status in 2050";
+      document.getElementById("dynamicTitle").innerText = selectedCountry + " Food System Status in 2050";
+    }
       anychart.onDocumentReady(function () {
 
 
